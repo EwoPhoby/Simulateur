@@ -14,7 +14,7 @@ int main(int argc, const char** argv) {
     //fenetre raylib
     while (!WindowShouldClose()){
         BeginDrawing();
-        ClearBackground(BLUE);
+        ClearBackground(BLUE);//
 
            
 
