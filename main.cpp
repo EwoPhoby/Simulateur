@@ -2,6 +2,8 @@
 
 int main(int argc, const char** argv) {
     
-    std::cout << "message" << std::endl;
+    //cout << "message" << endl;
+    tank t(5);
+    t.verif();
     return 0;
 }

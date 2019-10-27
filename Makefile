@@ -6,7 +6,7 @@ OBJ_FILES = main.o tank.o
 
 all : $(EXEC_NAME)
 
-run :
+run :$(EXEC_NAME)
 	./projet
 
 $(EXEC_NAME) : $(OBJ_FILES)
@@ -22,7 +22,6 @@ clean :
 	rm $(EXEC_NAME) $(OBJ_FILES)
 
 git:
-	make clean
 	git add *
 	git commit -a
 	git push
