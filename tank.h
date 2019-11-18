@@ -1,4 +1,7 @@
 #include <iostream>
+#include <raylib.h>
+
+
 
 using namespace std;
 
@@ -11,6 +14,8 @@ private:
     bool etat;
 public:
     tank(int);
+    int getCapacite();
+    void alea();
     void verif();
 
 
