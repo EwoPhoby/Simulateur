@@ -1,19 +1,22 @@
 #include <iostream>
+#include <raylib.h>
+
+
 
 using namespace std;
 
 
 
-class tank
+class Moteur
 {
 private:
-    int capacite;
     bool etat;
 public:
-    tank(int);
+    Moteur(int);
+    void modifEtat();
     void verif();
 
 
-    ~tank();
+    ~Moteur();
 };
 
