@@ -3,6 +3,7 @@
 #include <iostream>
 #include <raylib.h>
 #include <string.h>
+#include <unistd.h>
 
 
 

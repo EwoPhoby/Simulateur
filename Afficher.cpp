@@ -80,7 +80,7 @@ void drawInterface(){
         for (int i = 0; i < 8; i++)
         {
             if (CheckCollisionPointRec(GetMousePosition(), bouton[i])&& IsGestureDetected(GESTURE_TAP)) 
-                {//colorState[i] = 1;
+                {
                     DrawCircle(GetScreenWidth(),GetScreenHeight()/2,50,BLUE);
                 }
             
