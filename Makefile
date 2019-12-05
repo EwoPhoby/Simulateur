@@ -25,6 +25,6 @@ clean :
 	rm $(EXEC_NAME) $(OBJ_FILES)
 
 git:
-	git add *
+	git add .
 	git commit -a --allow-empty-message -m ''
 	git push

@@ -30,9 +30,11 @@ int main(void)
 
         
         
-        //drawTank(a);
+        drawTank(a);
 
         drawInterface();
+
+        drawMoteur();
 
 
         EndDrawing();

@@ -6,7 +6,7 @@ void drawTank(Tank a){
 
     for (int i=0;i<a.getNbTanks(); i++)
     {
-        Tank[i].x=100 + 220*i;
+        Tank[i].x=(GetScreenWidth()/2)-200+(250*i);
         Tank[i].y=70;
         Tank[i].width=150;
         Tank[i].height=150;
@@ -17,8 +17,6 @@ void drawTank(Tank a){
     for (int i = 0; i<a.getNbTanks(); i++)    // Draw all rectangles
             {
                 DrawRectangleRec(Tank[i],RED);
-                
-
             }
 
             DrawText("Tank 1", Tank[0].x+50 ,Tank[0].y+(Tank[0].height/2), 20, BLACK);
@@ -27,6 +25,32 @@ void drawTank(Tank a){
 
 
 }
+
+void drawMoteur(){
+
+    Rectangle Moteur[3];
+
+    for (int i=0;i<3; i++)
+    {
+        Moteur[i].x=(GetScreenWidth()/2)-180+(250*i);
+        Moteur[i].y=(GetScreenHeight()/2)+75;
+        Moteur[i].width=75;
+        Moteur[i].height=150;
+    }
+
+    for (int i = 0; i<3; i++)
+            {
+                DrawRectangleRec(Moteur[i],GRAY);
+            
+            }
+
+    DrawText("M1", Moteur[0].x+Moteur[0].width/2 ,Moteur[0].y+(Moteur[0].height/2), 20, BLACK);
+    DrawText("M2", Moteur[1].x+Moteur[1].width/2 ,Moteur[1].y+(Moteur[1].height/2), 20, BLACK);
+    DrawText("M3", Moteur[2].x+Moteur[2].width/2 ,Moteur[2].y+(Moteur[2].height/2), 20, BLACK);
+
+}
+
+
 
 void drawInterface(){
 
