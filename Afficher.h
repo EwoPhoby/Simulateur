@@ -9,3 +9,4 @@
 void drawTank(Tank);
 void drawInterface();
 void drawMoteur();
+void clic();
