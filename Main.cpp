@@ -1,8 +1,8 @@
-#include "raylib.h"
-#include "Afficher.h"
+#include "Launcher.h"
 
-int main(void)
-{
+int main(int argc, const char** argv) {
+    
+    
     // Initialization
     //--------------------------------------------------------------------------------------
     const int screenWidth = 1000;
@@ -16,30 +16,11 @@ int main(void)
     SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
     //--------------------------------------------------------------------------------------
 
-    Tank a(3);
-
-    // Main game loop
-    while (!WindowShouldClose())    // Detect window close button or ESC key
-    {
-        // Update
-        //----------------------------------------------------------------------------------
-        
-        // Draw
-        //----------------------------------------------------------------------------------
-        BeginDrawing();
-
-        
-        
-        drawTank(a);
-
-        drawInterface();
-
-        drawMoteur();
+    if (argc==1)
+    Principal();
 
 
-        EndDrawing();
-        //----------------------------------------------------------------------------------
-    }
+    else cout<<"Pas Encore Implemente"<<endl;
 
     // De-Initialization
     //--------------------------------------------------------------------------------------

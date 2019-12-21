@@ -77,6 +77,8 @@ void drawInterface(){
         
 
         
+
+        //Verification appui bouton interface
         for (int i = 0; i < 8; i++)
         {
             if (CheckCollisionPointRec(GetMousePosition(), bouton[i])&& IsGestureDetected(GESTURE_TAP)) 
