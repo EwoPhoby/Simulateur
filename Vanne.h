@@ -7,17 +7,16 @@ using namespace std;
 
 
 
-class Moteur
+class Vanne
 {
 private:
     bool etat;
 public:
-    Moteur();
-    Moteur(bool);
+    Vanne();
+    Vanne(bool);
     void modifEtat();
     bool getEtat();
 
 
-    ~Moteur();
+    ~Vanne();
 };
-

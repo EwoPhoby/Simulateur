@@ -2,7 +2,7 @@ CC = g++
 CFLAGS = -Wall -ansi -c
 LDFLAGS=-lraylib -lGL -lm -lpthread -ldl -lX11 -lXrandr -lXinerama -lXi -lXxf86vm -lXcursor
 EXEC_NAME = projet
-OBJ_FILES = Main.o Tank.o Afficher.o Launcher.o
+OBJ_FILES = Main.o Tank.o Afficher.o Launcher.o Moteur.o Vanne.o
 
 all : $(EXEC_NAME)
 
@@ -14,6 +14,12 @@ $(EXEC_NAME) : $(OBJ_FILES)
 
 Tank.o: Tank.cpp
 	$(CC) Tank.cpp $(CFLAGS) $(LDFLAGS)
+
+Moteur.o: Moteur.cpp
+	$(CC) Moteur.cpp $(CFLAGS) $(LDFLAGS)
+
+Vanne.o: Vanne.cpp
+	$(CC) Vanne.cpp $(CFLAGS) $(LDFLAGS)
 
 Launcher.o: Launcher.cpp
 	$(CC) Launcher.cpp $(CFLAGS) $(LDFLAGS)
