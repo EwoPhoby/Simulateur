@@ -1,10 +1,10 @@
 #include "Afficher.h"
 
-void drawTank(Tank a){
-    Rectangle Tank[a.getNbTanks()];      // Rectangles array
+void drawTank(){
+    Rectangle Tank[3];      // Rectangles array
         
 
-    for (int i=0;i<a.getNbTanks(); i++)
+    for (int i=0;i<3; i++)
     {
         Tank[i].x=(GetScreenWidth()/2)-200+(250*i);
         Tank[i].y=70;
@@ -14,7 +14,7 @@ void drawTank(Tank a){
 
 
 
-    for (int i = 0; i<a.getNbTanks(); i++)    // Draw all rectangles
+    for (int i = 0; i<3; i++)    // Draw all rectangles
             {
                 DrawRectangleRec(Tank[i],RED);
             }

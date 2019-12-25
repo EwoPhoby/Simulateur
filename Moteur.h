@@ -12,7 +12,7 @@ class Moteur
 private:
     bool etat;
 public:
-    Moteur(int);
+    Moteur();
     void modifEtat();
     void verif();
 

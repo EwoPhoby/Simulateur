@@ -10,11 +10,10 @@ using namespace std;
 class Tank
 {
 private:
-    int nbTanks;
     int capacite;
     bool etat;
 public:
-    Tank(int);
+    Tank();
     int getCapacite();
     int getNbTanks();
     void drawTank();

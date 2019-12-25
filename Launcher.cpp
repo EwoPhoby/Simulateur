@@ -1,7 +1,7 @@
 #include "Launcher.h"
 
 void Principal(){
-    Tank a(3);
+    Tank a();
 
     // Main game loop
     while (!WindowShouldClose())    // Detect window close button or ESC key
@@ -13,7 +13,7 @@ void Principal(){
         //----------------------------------------------------------------------------------
         BeginDrawing();
 
-        drawTank(a);
+        drawTank();
 
         drawInterface();
 

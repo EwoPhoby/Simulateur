@@ -2,9 +2,8 @@
 
 
 
-Tank::Tank(int nbTanks)
+Tank::Tank()
 {
-    this->nbTanks=nbTanks;
     this->capacite=100;
     this->etat=false;
 }
@@ -14,9 +13,7 @@ int Tank::getCapacite(){
     return capacite;
 }
 
-int Tank::getNbTanks(){
-    return nbTanks;
-}
+
 
 Tank::~Tank()
 {

@@ -7,7 +7,7 @@
 
 
 
-void drawTank(Tank);
+void drawTank();
 void drawInterface();
 void drawMoteur();
 void clic();
