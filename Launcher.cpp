@@ -1,17 +1,18 @@
 #include "Launcher.h"
 
-void Principal(){
-    Tank a();
+void Launcher::Principal(){
+    
 
     // Main game loop
-    while (!WindowShouldClose())    // Detect window close button or ESC key
+    //while (!WindowShouldClose())    // Detect window close button or ESC key
+    while (1)    // Detect window close button or ESC key
     {
         // Update
         //----------------------------------------------------------------------------------
         
         // Draw
         //----------------------------------------------------------------------------------
-        BeginDrawing();
+        /*BeginDrawing();
 
         drawTank();
 
@@ -19,8 +20,15 @@ void Principal(){
 
         drawMoteur();
 
+        if(a)cout<<"AAAAAAAPPPPPPPUUUUUUUIIIIIII"<<endl;
 
-        EndDrawing();
+
+        EndDrawing();*/
         //----------------------------------------------------------------------------------
     }
 }
+
+Launcher::Launcher(){
+    
+}
+Launcher::~Launcher(){}

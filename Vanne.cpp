@@ -16,3 +16,5 @@ void Vanne::modifEtat(){
     else etat=true;
     
 }
+
+Vanne::~Vanne(){}

@@ -49,7 +49,7 @@ void drawMoteur(){
     DrawText("M3", Moteur[2].x+Moteur[2].width/2 ,Moteur[2].y+(Moteur[2].height/2), 20, BLACK);
 
 }
-
+bool a=false;
 
 
 void drawInterface(){
@@ -83,8 +83,13 @@ void drawInterface(){
         {
             if (CheckCollisionPointRec(GetMousePosition(), bouton[i])&& IsGestureDetected(GESTURE_TAP)) 
                 {
-                    DrawCircle(GetScreenWidth(),GetScreenHeight()/2,50,BLUE);
+                    a=true;
                 }
+            else
+            {
+                a=false;
+            }
+            
             
         }
 
