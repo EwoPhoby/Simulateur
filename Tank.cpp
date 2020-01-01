@@ -13,7 +13,13 @@ int Tank::getCapacite(){
     return capacite;
 }
 
-
+bool Tank::getEtat(){
+    return etat;
+}
+void Tank::setEtat(bool a){
+    etat=a;
+}
+void Tank::setEtat(){}
 
 Tank::~Tank()
 {

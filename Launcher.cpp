@@ -28,9 +28,9 @@ void Launcher::Principal(){
 
 void Launcher::Alimentation(){
     if( 
-        (( P1.getEtat() || P1s.getEtat() ) && T1.getCapacite()) || 
-        (( P2.getEtat() || P2s.getEtat() ) && T2.getCapacite() && V12.getEtat()) || 
-        (( P3.getEtat() || P3s.getEtat() ) && T3.getCapacite() && V13.getEtat()) 
+        (( P1.getEtat() || P1s.getEtat() ) && T1.getEtat()) || 
+        (( P2.getEtat() || P2s.getEtat() ) && T2.getEtat() && V12.getEtat()) || 
+        (( P3.getEtat() || P3s.getEtat() ) && T3.getEtat() && V13.getEtat()) 
         
     )
     M1.marche();
@@ -39,24 +39,36 @@ void Launcher::Alimentation(){
     
 
     if( 
-        (( P2.getEtat() || P2s.getEtat() ) && T2.getCapacite()) || 
-        (( P1.getEtat() || P1s.getEtat() ) && T1.getCapacite() && V12.getEtat()) || 
-        (( P3.getEtat() || P3s.getEtat() ) && T3.getCapacite() && V23.getEtat()) 
+        (( P2.getEtat() || P2s.getEtat() ) && T2.getEtat()) || 
+        (( P1.getEtat() || P1s.getEtat() ) && T1.getEtat() && V12.getEtat()) || 
+        (( P3.getEtat() || P3s.getEtat() ) && T3.getEtat() && V23.getEtat()) 
         
     )
     M2.marche();
     else M2.marchepas();
 
     if( 
-        (( P3.getEtat() || P3s.getEtat() ) && T3.getCapacite()) || 
-        (( P1.getEtat() || P1s.getEtat() ) && T1.getCapacite() && V13.getEtat()) || 
-        (( P2.getEtat() || P2s.getEtat() ) && T2.getCapacite() && V23.getEtat()) 
+        (( P3.getEtat() || P3s.getEtat() ) && T3.getEtat()) || 
+        (( P1.getEtat() || P1s.getEtat() ) && T1.getEtat() && V13.getEtat()) || 
+        (( P2.getEtat() || P2s.getEtat() ) && T2.getEtat() && V23.getEtat()) 
         
     )
     M3.marche();
     else M3.marchepas();
 }
 
+
+void Launcher::Transfert(){
+    
+    if(VT12.getEtat()){        
+        if(T1.getEtat())    T2.setEtat(T1.getEtat());   //verif et remplissage
+        else if (T2.getEtat())  T1.setEtat(T2.getEtat());
+    }
+    if(VT23.getEtat()){        
+        if(T2.getEtat())    T3.setEtat(T2.getEtat());   //verif et remplissage
+        else if (T3.getEtat())  T2.setEtat(T3.getEtat());
+    }
+}
 
 
 

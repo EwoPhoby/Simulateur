@@ -14,6 +14,9 @@ private:
 public:
     Tank();
     int getCapacite();
+    bool getEtat();
+    void setEtat();
+    void setEtat(bool);
     int getNbTanks();
     void drawTank();
 

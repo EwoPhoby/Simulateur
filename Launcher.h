@@ -13,6 +13,7 @@ public:
     Launcher();
     void Principal();
     void Alimentation();
+    void Transfert();
 
 
     ~Launcher();
