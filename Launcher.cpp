@@ -1,5 +1,10 @@
 #include "Launcher.h"
 
+
+Rectangle Tank_T[3];      // Rectangles array
+Rectangle Pompe_P[6];
+Rectangle Moteur_M[3];
+
 void Launcher::Principal(){
     
 
@@ -29,40 +34,7 @@ void Launcher::Principal(){
     }
 }
 
-void Launcher::Alimentation(){
-    if( 
-        (( P1.getEtat() || P1s.getEtat() ) && T1.getEtat()) || 
-        (( P2.getEtat() || P2s.getEtat() ) && T2.getEtat() && V12.getEtat()) || 
-        (( P3.getEtat() || P3s.getEtat() ) && T3.getEtat() && V13.getEtat()) 
-        
-    )
-    M1.marche();
-    else M1.marchepas();
 
-    if(M1.getEtat())cout<<"M1 fonctionne"<<endl;
-    else cout<<"M1 fonctionne pas"<<endl;
-    
-    
-    
-
-    if( 
-        (( P2.getEtat() || P2s.getEtat() ) && T2.getEtat()) || 
-        (( P1.getEtat() || P1s.getEtat() ) && T1.getEtat() && V12.getEtat()) || 
-        (( P3.getEtat() || P3s.getEtat() ) && T3.getEtat() && V23.getEtat()) 
-        
-    )
-    M2.marche();
-    else M2.marchepas();
-
-    if( 
-        (( P3.getEtat() || P3s.getEtat() ) && T3.getEtat()) || 
-        (( P1.getEtat() || P1s.getEtat() ) && T1.getEtat() && V13.getEtat()) || 
-        (( P2.getEtat() || P2s.getEtat() ) && T2.getEtat() && V23.getEtat()) 
-        
-    )
-    M3.marche();
-    else M3.marchepas();
-}
 
 
 void Launcher::Transfert(){
@@ -78,88 +50,138 @@ void Launcher::Transfert(){
 }
 
 void Launcher::drawTank(){
-    Rectangle Tank[3];      // Rectangles array
     
-    Rectangle Pompe[6];
 
     for (int i=0;i<3; i++)
     {
-        Tank[i].x=(GetScreenWidth()/2)-200+(250*i);
-        Tank[i].y=70;
-        Tank[i].width=150;
-        Tank[i].height=150;
+        Tank_T[i].x=(GetScreenWidth()/2)-200+(250*i);
+        Tank_T[i].y=70;
+        Tank_T[i].width=150;
+        Tank_T[i].height=150;
 
     }
     for (int i = 0; i<3; i++)    // Draw all rectangles
             {
-                DrawRectangleRec(Tank[i],RED);
+                DrawRectangleRec(Tank_T[i],RED);
                 
             }
-            DrawText("Tank 1", Tank[0].x+50 ,Tank[0].y+(Tank[0].height/2), 20, BLACK);
-            DrawText("Tank 2", Tank[1].x+50 ,Tank[1].y+(Tank[1].height/2), 20, BLACK);
-            DrawText("Tank 3", Tank[2].x+50 ,Tank[2].y+(Tank[2].height/2), 20, BLACK);
+            DrawText("Tank 1", Tank_T[0].x+50 ,Tank_T[0].y+(Tank_T[0].height/2), 20, BLACK);
+            DrawText("Tank 2", Tank_T[1].x+50 ,Tank_T[1].y+(Tank_T[1].height/2), 20, BLACK);
+            DrawText("Tank 3", Tank_T[2].x+50 ,Tank_T[2].y+(Tank_T[2].height/2), 20, BLACK);
 
 
 
     for (int i = 0; i < 6; i++)
     {
         if (i<2){
-            if(i%2==0)Pompe[i].x=Tank[0].x;
-            else Pompe[i].x=Tank[0].x+50;
+            if(i%2==0)Pompe_P[i].x=Tank_T[0].x;
+            else Pompe_P[i].x=Tank_T[0].x+50;
         }
             
         else if (i<4&&i>=2){
-            if(i%2==0)Pompe[i].x=Tank[1].x;
-            else Pompe[i].x=Tank[1].x+50;
+            if(i%2==0)Pompe_P[i].x=Tank_T[1].x;
+            else Pompe_P[i].x=Tank_T[1].x+50;
         }
         else if(i>=4)
         {
-            if(i%2==0)Pompe[i].x=Tank[2].x;
-            else Pompe[i].x=Tank[2].x+50;
+            if(i%2==0)Pompe_P[i].x=Tank_T[2].x;
+            else Pompe_P[i].x=Tank_T[2].x+50;
         }
 
-        Pompe[i].y=Tank[0].y-50;
-        Pompe[i].width=Pompe[i].height=45;
-        DrawRectangleRec(Pompe[i],GREEN);
+        Pompe_P[i].y=Tank_T[0].y-50;
+        Pompe_P[i].width=Pompe_P[i].height=45;
+        DrawRectangleRec(Pompe_P[i],GREEN);
 
     }
 
-    DrawText("P1", Pompe[0].x,Pompe[0].y, 20, WHITE);
-    DrawText("P12", Pompe[1].x,Pompe[1].y, 20, WHITE);
-    DrawText("P2", Pompe[2].x,Pompe[2].y, 20, WHITE);
-    DrawText("P22", Pompe[3].x,Pompe[3].y, 20, WHITE);
-    DrawText("P3", Pompe[4].x,Pompe[4].y, 20, WHITE);
-    DrawText("P32", Pompe[5].x,Pompe[5].y, 20, WHITE);
+    DrawText("P1", Pompe_P[0].x,Pompe_P[0].y, 20, WHITE);
+    DrawText("P12", Pompe_P[1].x,Pompe_P[1].y, 20, WHITE);
+    DrawText("P2", Pompe_P[2].x,Pompe_P[2].y, 20, WHITE);
+    DrawText("P22", Pompe_P[3].x,Pompe_P[3].y, 20, WHITE);
+    DrawText("P3", Pompe_P[4].x,Pompe_P[4].y, 20, WHITE);
+    DrawText("P32", Pompe_P[5].x,Pompe_P[5].y, 20, WHITE);
     
-    
+    if (CheckCollisionPointRec(GetMousePosition(), Pompe_P[0])&& IsGestureDetected(GESTURE_TAP)) 
+    P1.modifEtat();
+    if (CheckCollisionPointRec(GetMousePosition(), Pompe_P[1])&& IsGestureDetected(GESTURE_TAP))
+    P1s.modifEtat(); 
+    if (CheckCollisionPointRec(GetMousePosition(), Pompe_P[2])&& IsGestureDetected(GESTURE_TAP)) 
+    P2.modifEtat();
+    if (CheckCollisionPointRec(GetMousePosition(), Pompe_P[3])&& IsGestureDetected(GESTURE_TAP)) 
+    P2.modifEtat();
+    if (CheckCollisionPointRec(GetMousePosition(), Pompe_P[4])&& IsGestureDetected(GESTURE_TAP)) 
+    P3.modifEtat();
+    if (CheckCollisionPointRec(GetMousePosition(), Pompe_P[5])&& IsGestureDetected(GESTURE_TAP)) 
+    P3s.modifEtat();
+
+
 
 
 }
 
 void Launcher::drawMoteur(){
 
-    Rectangle Moteur[3];
-
     for (int i=0;i<3; i++)
     {
-        Moteur[i].x=(GetScreenWidth()/2)-180+(250*i);
-        Moteur[i].y=(GetScreenHeight()/2)+75;
-        Moteur[i].width=75;
-        Moteur[i].height=150;
+        Moteur_M[i].x=(GetScreenWidth()/2)-180+(250*i);
+        Moteur_M[i].y=(GetScreenHeight()/2)+75;
+        Moteur_M[i].width=75;
+        Moteur_M[i].height=150;
     }
 
     for (int i = 0; i<3; i++)
             {
-                DrawRectangleRec(Moteur[i],GRAY);
+                DrawRectangleRec(Moteur_M[i],GRAY);
             
             }
 
-    DrawText("M1", Moteur[0].x+Moteur[0].width/2 ,Moteur[0].y+(Moteur[0].height/2), 20, BLACK);
-    DrawText("M2", Moteur[1].x+Moteur[1].width/2 ,Moteur[1].y+(Moteur[1].height/2), 20, BLACK);
-    DrawText("M3", Moteur[2].x+Moteur[2].width/2 ,Moteur[2].y+(Moteur[2].height/2), 20, BLACK);
+    DrawText("M1", Moteur_M[0].x+Moteur_M[0].width/2 ,Moteur_M[0].y+(Moteur_M[0].height/2), 20, BLACK);
+    DrawText("M2", Moteur_M[1].x+Moteur_M[1].width/2 ,Moteur_M[1].y+(Moteur_M[1].height/2), 20, BLACK);
+    DrawText("M3", Moteur_M[2].x+Moteur_M[2].width/2 ,Moteur_M[2].y+(Moteur_M[2].height/2), 20, BLACK);
 
 }
 
+void Launcher::Alimentation(){
+    if( 
+        (( P1.getEtat() || P1s.getEtat() ) && T1.getEtat()) || 
+        (( P2.getEtat() || P2s.getEtat() ) && T2.getEtat() && V12.getEtat()) || 
+        (( P3.getEtat() || P3s.getEtat() ) && T3.getEtat() && V13.getEtat()) 
+        
+    )
+    M1.marche();
+    else M1.marchepas();
+
+    if(M1.getEtat())DrawCircle(Moteur_M[0].x+Moteur_M[0].width/2, Moteur_M[0].y+20,19,GREEN);
+    else DrawCircle(Moteur_M[0].x+Moteur_M[0].width/2, Moteur_M[0].y+20,19,RED);
+    
+    
+    
+
+    if( 
+        (( P2.getEtat() || P2s.getEtat() ) && T2.getEtat()) || 
+        (( P1.getEtat() || P1s.getEtat() ) && T1.getEtat() && V12.getEtat()) || 
+        (( P3.getEtat() || P3s.getEtat() ) && T3.getEtat() && V23.getEtat()) 
+        
+    )
+    M2.marche();
+    else M2.marchepas();
+
+    if(M2.getEtat())DrawCircle(Moteur_M[1].x+Moteur_M[1].width/2, Moteur_M[1].y+20,19,GREEN);
+    else DrawCircle(Moteur_M[1].x+Moteur_M[1].width/2, Moteur_M[1].y+20,19,RED);
+    
+    if( 
+        (( P3.getEtat() || P3s.getEtat() ) && T3.getEtat()) || 
+        (( P1.getEtat() || P1s.getEtat() ) && T1.getEtat() && V13.getEtat()) || 
+        (( P2.getEtat() || P2s.getEtat() ) && T2.getEtat() && V23.getEtat()) 
+        
+    )
+    M3.marche();
+    else M3.marchepas();
+
+    if(M3.getEtat())DrawCircle(Moteur_M[2].x+Moteur_M[2].width/2, Moteur_M[2].y+20,19,GREEN);
+    else DrawCircle(Moteur_M[2].x+Moteur_M[2].width/2, Moteur_M[2].y+20,19,RED);
+    
+}
 
 void Launcher::drawInterface(){
 
@@ -212,9 +234,10 @@ void Launcher::drawInterface(){
 
 Launcher::Launcher(){
     
-    P1.marche();
-    P1s.marchepas();
+    
     T1.marche();
+    T2.marche();
+    T3.marche();
 
     
 }
