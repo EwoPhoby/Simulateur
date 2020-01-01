@@ -28,6 +28,16 @@ void Launcher::Principal(){
     }
 }
 
+void Launcher::Alimentaion(){
+    if( 
+        (( P1.getEtat() || P1s.getEtat() ) && T1.getCapacite()) || 
+        (( P2.getEtat() || P2s.getEtat() ) && T2.getCapacite() && V12.getEtat()) || 
+        (( P3.getEtat() || P3s.getEtat() ) && T3.getCapacite() && V13.getEtat()) 
+        
+    )
+    M1.marche();
+}
+
 Launcher::Launcher(){
     
 }

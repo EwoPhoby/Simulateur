@@ -22,6 +22,8 @@ void Moteur::modifEtat(){
     else etat=true;
 }
 
+void Moteur::marche(){etat=true;}
+
 
 
 Moteur::~Moteur()
