@@ -12,7 +12,7 @@ private:
 public:
     Launcher();
     void Principal();
-    void Alimentaion();
+    void Alimentation();
 
 
     ~Launcher();

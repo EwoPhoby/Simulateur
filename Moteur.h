@@ -15,6 +15,7 @@ public:
     Moteur(bool);
     void modifEtat();
     void marche();
+    void marchepas();
     bool getEtat();
 
 

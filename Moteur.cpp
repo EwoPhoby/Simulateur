@@ -23,6 +23,7 @@ void Moteur::modifEtat(){
 }
 
 void Moteur::marche(){etat=true;}
+void Moteur::marchepas(){etat=false;}
 
 
 
