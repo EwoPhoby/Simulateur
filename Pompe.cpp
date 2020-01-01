@@ -17,5 +17,11 @@ void Pompe::modifEtat(){
     else etat=true;
     
 }
+void Pompe::marche(){
+    etat=true;
+}
+void Pompe::marchepas(){
+    etat=false;
+}
 
 Pompe::~Pompe(){}

@@ -21,6 +21,8 @@ void Launcher::Principal(){
 
         Alimentation();
 
+        Transfert();
+
 
         EndDrawing();
         //----------------------------------------------------------------------------------
@@ -36,6 +38,10 @@ void Launcher::Alimentation(){
     )
     M1.marche();
     else M1.marchepas();
+
+    if(M1.getEtat())cout<<"M1 fonctionne"<<endl;
+    else cout<<"M1 fonctionne pas"<<endl;
+    
     
     
 
@@ -73,7 +79,8 @@ void Launcher::Transfert(){
 
 void Launcher::drawTank(){
     Rectangle Tank[3];      // Rectangles array
-        
+    
+    Rectangle Pompe[6];
 
     for (int i=0;i<3; i++)
     {
@@ -81,18 +88,50 @@ void Launcher::drawTank(){
         Tank[i].y=70;
         Tank[i].width=150;
         Tank[i].height=150;
+
     }
-
-
-
     for (int i = 0; i<3; i++)    // Draw all rectangles
             {
                 DrawRectangleRec(Tank[i],RED);
+                
             }
-
             DrawText("Tank 1", Tank[0].x+50 ,Tank[0].y+(Tank[0].height/2), 20, BLACK);
             DrawText("Tank 2", Tank[1].x+50 ,Tank[1].y+(Tank[1].height/2), 20, BLACK);
             DrawText("Tank 3", Tank[2].x+50 ,Tank[2].y+(Tank[2].height/2), 20, BLACK);
+
+
+
+    for (int i = 0; i < 6; i++)
+    {
+        if (i<2){
+            if(i%2==0)Pompe[i].x=Tank[0].x;
+            else Pompe[i].x=Tank[0].x+50;
+        }
+            
+        else if (i<4&&i>=2){
+            if(i%2==0)Pompe[i].x=Tank[1].x;
+            else Pompe[i].x=Tank[1].x+50;
+        }
+        else if(i>=4)
+        {
+            if(i%2==0)Pompe[i].x=Tank[2].x;
+            else Pompe[i].x=Tank[2].x+50;
+        }
+
+        Pompe[i].y=Tank[0].y-50;
+        Pompe[i].width=Pompe[i].height=45;
+        DrawRectangleRec(Pompe[i],GREEN);
+
+    }
+
+    DrawText("P1", Pompe[0].x,Pompe[0].y, 20, WHITE);
+    DrawText("P12", Pompe[1].x,Pompe[1].y, 20, WHITE);
+    DrawText("P2", Pompe[2].x,Pompe[2].y, 20, WHITE);
+    DrawText("P22", Pompe[3].x,Pompe[3].y, 20, WHITE);
+    DrawText("P3", Pompe[4].x,Pompe[4].y, 20, WHITE);
+    DrawText("P32", Pompe[5].x,Pompe[5].y, 20, WHITE);
+    
+    
 
 
 }
@@ -120,7 +159,6 @@ void Launcher::drawMoteur(){
     DrawText("M3", Moteur[2].x+Moteur[2].width/2 ,Moteur[2].y+(Moteur[2].height/2), 20, BLACK);
 
 }
-bool a=false;
 
 
 void Launcher::drawInterface(){
@@ -154,12 +192,13 @@ void Launcher::drawInterface(){
         {
             if (CheckCollisionPointRec(GetMousePosition(), bouton[i])&& IsGestureDetected(GESTURE_TAP)) 
                 {
-                    a=true;
+                    DrawCircle(GetScreenWidth(),GetScreenHeight()/2,50,BLUE);
+                    V12.modifEtat();
+                    //break;
+
+                    //faire des if avec le methodes implementees ptet avec des enum de i	
                 }
-            else
-            {
-                a=false;
-            }
+            
             
             
         }
@@ -168,19 +207,15 @@ void Launcher::drawInterface(){
 }
 
 
-/*
-void clic(){
-
-}*/
-
-
-
-
-
 
 
 
 Launcher::Launcher(){
+    
+    P1.marche();
+    P1s.marchepas();
+    T1.marche();
+
     
 }
 Launcher::~Launcher(){}

@@ -14,6 +14,7 @@ bool Vanne::getEtat(){
 void Vanne::modifEtat(){
     if (getEtat())etat=false;
     else etat=true;
+    cout<<getEtat()<<endl;
     
 }
 

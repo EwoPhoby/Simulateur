@@ -13,6 +13,8 @@ private:
 public:
     Pompe();
     Pompe(bool);
+    void marche();
+    void marchepas();
     void modifEtat();
     bool getEtat();
 

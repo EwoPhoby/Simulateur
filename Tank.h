@@ -17,6 +17,8 @@ public:
     bool getEtat();
     void setEtat();
     void setEtat(bool);
+    void marche();
+    void marchepas();
     int getNbTanks();
     void drawTank();
 
