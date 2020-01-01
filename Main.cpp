@@ -8,7 +8,7 @@ int main(int argc, const char** argv) {
     const int screenWidth = 1000;
     const int screenHeight = 700;
 
-    //InitWindow(screenWidth, screenHeight, "Simulateur");   SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
+    InitWindow(screenWidth, screenHeight, "Simulateur");   SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
     //--------------------------------------------------------------------------------------
 
     if (argc==1){
