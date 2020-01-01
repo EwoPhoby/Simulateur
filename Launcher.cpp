@@ -4,6 +4,8 @@
 Rectangle Tank_T[3];      // Rectangles array
 Rectangle Pompe_P[6];
 Rectangle Moteur_M[3];
+const char* text[6]={"P1","P12","P2","P22","P3","P32"};
+
 
 void Launcher::Principal(){
     
@@ -90,27 +92,52 @@ void Launcher::drawTank(){
 
         Pompe_P[i].y=Tank_T[0].y-50;
         Pompe_P[i].width=Pompe_P[i].height=45;
-        DrawRectangleRec(Pompe_P[i],GREEN);
+        //DrawRectangleRec(Pompe_P[i],GREEN);
 
     }
 
-    DrawText("P1", Pompe_P[0].x,Pompe_P[0].y, 20, WHITE);
-    DrawText("P12", Pompe_P[1].x,Pompe_P[1].y, 20, WHITE);
-    DrawText("P2", Pompe_P[2].x,Pompe_P[2].y, 20, WHITE);
-    DrawText("P22", Pompe_P[3].x,Pompe_P[3].y, 20, WHITE);
-    DrawText("P3", Pompe_P[4].x,Pompe_P[4].y, 20, WHITE);
-    DrawText("P32", Pompe_P[5].x,Pompe_P[5].y, 20, WHITE);
+    if(P1.getEtat())DrawRectangleRec(Pompe_P[0],GREEN);
+    else DrawRectangleRec(Pompe_P[0],RED);
+
+    if(P1s.getEtat())DrawRectangleRec(Pompe_P[1],GREEN);
+    else DrawRectangleRec(Pompe_P[1],RED);
+
+    if(P2.getEtat())DrawRectangleRec(Pompe_P[2],GREEN);
+    else DrawRectangleRec(Pompe_P[2],RED);
+
+    if(P2s.getEtat())DrawRectangleRec(Pompe_P[3],GREEN);
+    else DrawRectangleRec(Pompe_P[3],RED);
     
+    if(P3.getEtat())DrawRectangleRec(Pompe_P[4],GREEN);
+    else DrawRectangleRec(Pompe_P[4],RED);
+
+    if(P3s.getEtat())DrawRectangleRec(Pompe_P[5],GREEN);
+    else DrawRectangleRec(Pompe_P[5],RED);
+
+for (int i = 0; i < 6; i++)
+{
+    DrawText(text[i], Pompe_P[i].x,Pompe_P[i].y, 20, WHITE);
+}
+
+    
+//1 sur 2 car interface 2 pour reparation
+
+
     if (CheckCollisionPointRec(GetMousePosition(), Pompe_P[0])&& IsGestureDetected(GESTURE_TAP)) 
     P1.modifEtat();
+
     if (CheckCollisionPointRec(GetMousePosition(), Pompe_P[1])&& IsGestureDetected(GESTURE_TAP))
     P1s.modifEtat(); 
+
     if (CheckCollisionPointRec(GetMousePosition(), Pompe_P[2])&& IsGestureDetected(GESTURE_TAP)) 
     P2.modifEtat();
+
     if (CheckCollisionPointRec(GetMousePosition(), Pompe_P[3])&& IsGestureDetected(GESTURE_TAP)) 
-    P2.modifEtat();
+    P2s.modifEtat();
+
     if (CheckCollisionPointRec(GetMousePosition(), Pompe_P[4])&& IsGestureDetected(GESTURE_TAP)) 
     P3.modifEtat();
+
     if (CheckCollisionPointRec(GetMousePosition(), Pompe_P[5])&& IsGestureDetected(GESTURE_TAP)) 
     P3s.modifEtat();
 
@@ -186,7 +213,7 @@ void Launcher::Alimentation(){
 void Launcher::drawInterface(){
 
     const char *nomBouton[8] = {
-        "VT1", "VT2", "P12", "P22", "P32", "V12", "V13", "V23"};
+        "VT12", "VT23", "P12", "P22", "P32", "V12", "V13", "V23"};
 
     Rectangle bouton[8] = { 0 };     // Rectangles array
 
@@ -205,40 +232,54 @@ void Launcher::drawInterface(){
 
         DrawText(nomBouton[i], bouton[i].x + bouton[i].width/2 - MeasureText(nomBouton[i], 25) - 12,
                              bouton[i].y + bouton[i].height/2 , 30,WHITE);
-        
+    }
+
+    if(VT12.getEtat())DrawCircle(Tank_T[0].x+Tank_T[0].width+50,Tank_T[0].height,20,GREEN);
+    else DrawCircle(Tank_T[0].x+Tank_T[0].width+50,Tank_T[0].height,20,RED);
+
+    if(VT23.getEtat())DrawCircle(Tank_T[1].x+Tank_T[1].width+50,Tank_T[1].height,20,GREEN);
+    else DrawCircle(Tank_T[1].x+Tank_T[1].width+50,Tank_T[1].height,20,RED);
+
 
         
+//-------------------------------------------------------------------------------------------------
+        //Appui bouton interface
+//-------------------------------------------------------------------------------------------------
+       
+        if (CheckCollisionPointRec(GetMousePosition(), bouton[0])&& IsGestureDetected(GESTURE_TAP)) 
+        VT12.modifEtat();
 
-        //Verification appui bouton interface
-        for (int i = 0; i < 8; i++)
-        {
-            if (CheckCollisionPointRec(GetMousePosition(), bouton[i])&& IsGestureDetected(GESTURE_TAP)) 
-                {
-                    DrawCircle(GetScreenWidth(),GetScreenHeight()/2,50,BLUE);
-                    V12.modifEtat();
-                    //break;
+        if (CheckCollisionPointRec(GetMousePosition(), bouton[1])&& IsGestureDetected(GESTURE_TAP))
+        VT23.modifEtat();
 
-                    //faire des if avec le methodes implementees ptet avec des enum de i	
-                }
-            
-            
-            
-        }
+        if (CheckCollisionPointRec(GetMousePosition(), bouton[2])&& IsGestureDetected(GESTURE_TAP)) 
+        P1s.modifEtat();	
+        
+        if (CheckCollisionPointRec(GetMousePosition(), bouton[3])&& IsGestureDetected(GESTURE_TAP)) 
+        P2s.modifEtat();
 
-    }    
+        if (CheckCollisionPointRec(GetMousePosition(), bouton[4])&& IsGestureDetected(GESTURE_TAP)) 
+        P3s.modifEtat();
+
+        if (CheckCollisionPointRec(GetMousePosition(), bouton[5])&& IsGestureDetected(GESTURE_TAP)) 
+        V12.modifEtat();
+
+        if (CheckCollisionPointRec(GetMousePosition(), bouton[6])&& IsGestureDetected(GESTURE_TAP)) 
+        V13.modifEtat();
+            
+        if (CheckCollisionPointRec(GetMousePosition(), bouton[7])&& IsGestureDetected(GESTURE_TAP)) 
+        V23.modifEtat();
 }
 
-
-
-
-
 Launcher::Launcher(){
-    
-    
     T1.marche();
     T2.marche();
     T3.marche();
+    P1.marche();
+    P2.marche();
+    P3.marche();
 
-    
 }
-Launcher::~Launcher(){}
+Launcher::~Launcher(){
+    cout<<"Fin et destruction"<<endl;
+}
