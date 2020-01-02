@@ -20,7 +20,10 @@ void Tank::setEtat(bool a){
     etat=a;
 }
 
-void Tank::setEtat(){}
+void Tank::setEtat(){
+    if (etat==true)etat=false;
+    else etat=true;
+}
 
 void Tank::marche(){
     etat=true;

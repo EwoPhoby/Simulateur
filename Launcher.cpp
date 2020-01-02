@@ -96,6 +96,9 @@ void Launcher::drawTank(){
 
     }
 
+//----------------------------------------------------------------------------------------------------
+        //Affichage Pompe
+//----------------------------------------------------------------------------------------------------
     if(P1.getEtat())DrawRectangleRec(Pompe_P[0],GREEN);
     else DrawRectangleRec(Pompe_P[0],RED);
 
@@ -119,8 +122,50 @@ for (int i = 0; i < 6; i++)
     DrawText(text[i], Pompe_P[i].x,Pompe_P[i].y, 20, WHITE);
 }
 
+//----------------------------------------------------------------------------------------------------
+        //Affichage Vidange
+//----------------------------------------------------------------------------------------------------
+    Rectangle Vidange[3];
+    for (int i = 0; i < 3; i++)
+    {
+        Vidange[i]=Pompe_P[i];
+    }
+    Vidange[0].x=Pompe_P[1].x+50;
+    Vidange[1].x=Pompe_P[3].x+50;
+    Vidange[2].x=Pompe_P[5].x+50;
+
+    if(T1.getEtat())DrawRectangleRec(Vidange[0],GREEN);
+    else DrawRectangleRec(Vidange[0],RED);
+
+    if(T2.getEtat())DrawRectangleRec(Vidange[1],GREEN);
+    else DrawRectangleRec(Vidange[1],RED);
+
+    if(T3.getEtat())DrawRectangleRec(Vidange[2],GREEN);
+    else DrawRectangleRec(Vidange[2],RED);
+
+    for (int i = 0; i < 3; i++)
+    {
+        DrawText("v", Vidange[i].x,Vidange[i].y, 50, WHITE);
+    }
     
-//1 sur 2 car interface 2 pour reparation
+    
+    if (CheckCollisionPointRec(GetMousePosition(), Vidange[0])&& IsGestureDetected(GESTURE_TAP)) 
+    T1.setEtat();
+
+    if (CheckCollisionPointRec(GetMousePosition(), Vidange[1])&& IsGestureDetected(GESTURE_TAP)) 
+    T2.setEtat();
+
+    if (CheckCollisionPointRec(GetMousePosition(), Vidange[2])&& IsGestureDetected(GESTURE_TAP)) 
+    T3.setEtat();
+    
+
+    
+    
+
+    
+//----------------------------------------------------------------------------------------------------
+        //Appui sur bouton Pompes
+//----------------------------------------------------------------------------------------------------
 
 
     if (CheckCollisionPointRec(GetMousePosition(), Pompe_P[0])&& IsGestureDetected(GESTURE_TAP)) 
@@ -140,6 +185,54 @@ for (int i = 0; i < 6; i++)
 
     if (CheckCollisionPointRec(GetMousePosition(), Pompe_P[5])&& IsGestureDetected(GESTURE_TAP)) 
     P3s.modifEtat();
+
+
+//------------------------------------------------------------------------------------------------------
+        //Tuyaux
+//------------------------------------------------------------------------------------------------------
+
+    for (int i = 0; i<3; i++)
+    {
+        DrawLine(375+(250*i),220,375+(250*i),430,BLUE);
+    }
+    DrawLine((GetScreenWidth()/2)-200+150,Tank_T[0].height,
+    (GetScreenWidth()/2)+50,Tank_T[0].height,BLUE);
+
+    DrawLine(Tank_T[2].x,Tank_T[0].height,
+    Tank_T[2].x-100,Tank_T[0].height,BLUE);
+
+    DrawLine(375+250,410,375+500,410,BLUE);
+    DrawLine(375,300,375+500,300,BLUE);
+    DrawLine(375,350,375+250,350,BLUE);
+    
+
+
+
+//---------------------------------------------------------------------------------------------------
+        //Vannes entre Tanks
+//---------------------------------------------------------------------------------------------------
+    if(VT12.getEtat())DrawCircle(Tank_T[0].x+Tank_T[0].width+50,Tank_T[0].height,20,GREEN);
+    else DrawCircle(Tank_T[0].x+Tank_T[0].width+50,Tank_T[0].height,20,RED);
+
+    if(VT23.getEtat())DrawCircle(Tank_T[1].x+Tank_T[1].width+50,Tank_T[1].height,20,GREEN);
+    else DrawCircle(Tank_T[1].x+Tank_T[1].width+50,Tank_T[1].height,20,RED);
+
+//----------------------------------------------------------------------------------------------------
+        //Autres Vannes
+//----------------------------------------------------------------------------------------------------
+
+    if(V23.getEtat())DrawCircle(750,400,20,GREEN);
+    else DrawCircle(750,400,20,RED);
+
+    if(V12.getEtat())DrawCircle(450,350,20,GREEN);
+    else DrawCircle(450,350,20,RED);
+    
+    if(V13.getEtat())DrawCircle(700,300,20,GREEN);
+    else DrawCircle(700,300,20,RED);
+
+
+
+    
 
 
 
@@ -166,9 +259,15 @@ void Launcher::drawMoteur(){
     DrawText("M2", Moteur_M[1].x+Moteur_M[1].width/2 ,Moteur_M[1].y+(Moteur_M[1].height/2), 20, BLACK);
     DrawText("M3", Moteur_M[2].x+Moteur_M[2].width/2 ,Moteur_M[2].y+(Moteur_M[2].height/2), 20, BLACK);
 
+
+
+
 }
 
 void Launcher::Alimentation(){
+//----------------------------------------------------------------------------------------------------
+        //Conditions Pour Chaque Moteur et Affichage Etat Marche
+
     if( 
         (( P1.getEtat() || P1s.getEtat() ) && T1.getEtat()) || 
         (( P2.getEtat() || P2s.getEtat() ) && T2.getEtat() && V12.getEtat()) || 
@@ -234,12 +333,6 @@ void Launcher::drawInterface(){
                              bouton[i].y + bouton[i].height/2 , 30,WHITE);
     }
 
-    if(VT12.getEtat())DrawCircle(Tank_T[0].x+Tank_T[0].width+50,Tank_T[0].height,20,GREEN);
-    else DrawCircle(Tank_T[0].x+Tank_T[0].width+50,Tank_T[0].height,20,RED);
-
-    if(VT23.getEtat())DrawCircle(Tank_T[1].x+Tank_T[1].width+50,Tank_T[1].height,20,GREEN);
-    else DrawCircle(Tank_T[1].x+Tank_T[1].width+50,Tank_T[1].height,20,RED);
-
 
         
 //-------------------------------------------------------------------------------------------------
@@ -271,6 +364,10 @@ void Launcher::drawInterface(){
         V23.modifEtat();
 }
 
+
+
+
+
 Launcher::Launcher(){
     T1.marche();
     T2.marche();
@@ -280,6 +377,8 @@ Launcher::Launcher(){
     P3.marche();
 
 }
+
+
 Launcher::~Launcher(){
     cout<<"Fin et destruction"<<endl;
 }

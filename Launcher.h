@@ -2,6 +2,7 @@
 #include "Moteur.h"
 #include "Tank.h"
 #include "Vanne.h"
+#include <math.h>
 #include <iostream>
 #include <raylib.h>
 #include <string.h>
