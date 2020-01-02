@@ -217,18 +217,25 @@ for (int i = 0; i < 6; i++)
     if(VT23.getEtat())DrawCircle(Tank_T[1].x+Tank_T[1].width+50,Tank_T[1].height,20,GREEN);
     else DrawCircle(Tank_T[1].x+Tank_T[1].width+50,Tank_T[1].height,20,RED);
 
+    DrawText("VT12",485,145,12,BLACK);
+    DrawText("VT23",Tank_T[1].x+Tank_T[1].width+40,145,12,BLACK);
+
 //----------------------------------------------------------------------------------------------------
         //Autres Vannes
 //----------------------------------------------------------------------------------------------------
 
-    if(V23.getEtat())DrawCircle(750,400,20,GREEN);
-    else DrawCircle(750,400,20,RED);
+    if(V23.getEtat())DrawCircle(755,410,20,GREEN);
+    else DrawCircle(755,410,20,RED);
 
     if(V12.getEtat())DrawCircle(450,350,20,GREEN);
     else DrawCircle(450,350,20,RED);
     
     if(V13.getEtat())DrawCircle(700,300,20,GREEN);
     else DrawCircle(700,300,20,RED);
+
+    DrawText("V23",745,405,12,BLACK);
+    DrawText("V12",445,345,12,BLACK);
+    DrawText("V13",695,295,12,BLACK);
 
 
 
