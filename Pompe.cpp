@@ -11,6 +11,9 @@ Pompe::Pompe(bool a){
 bool Pompe::getEtat(){
     return etat;
 }
+void Pompe::setEtat(bool a){
+    etat=a;
+}
 
 void Pompe::modifEtat(){
     if (getEtat())etat=false;

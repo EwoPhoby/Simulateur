@@ -12,11 +12,17 @@ int main(int argc, const char** argv) {
     //--------------------------------------------------------------------------------------
 
     if (argc==1){
-    Launcher L;
-    L.Principal();}
+    Launcher L("exo");
+    L.Principal();
+    }
 
 
-    else cout<<"Pas Encore Implemente"<<endl;
+    else 
+    {
+        Launcher L("exo");
+        L.Principal();
+    }
+    
 
     // De-Initialization
     //--------------------------------------------------------------------------------------

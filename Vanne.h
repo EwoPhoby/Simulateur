@@ -14,6 +14,7 @@ public:
     Vanne();
     Vanne(bool);
     void modifEtat();
+    void setEtat(bool);
     bool getEtat();
 
 

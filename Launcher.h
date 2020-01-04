@@ -4,6 +4,7 @@
 #include "Vanne.h"
 #include <math.h>
 #include <iostream>
+#include <fstream>
 #include <raylib.h>
 #include <string.h>
 #include <unistd.h>
@@ -20,6 +21,7 @@ private:
     bool panne;
 public:
     Launcher();
+    Launcher(const char*);
     void Principal();
     void Alimentation();
     void Transfert();

@@ -10,6 +10,9 @@ Vanne::Vanne(bool a){
 bool Vanne::getEtat(){
     return etat;
 }
+void Vanne::setEtat(bool a){
+    etat=a;
+}
 
 void Vanne::modifEtat(){
     if (getEtat())etat=false;

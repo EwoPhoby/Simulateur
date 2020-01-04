@@ -373,7 +373,42 @@ void Launcher::drawInterface(){
 
 
 
+Launcher::Launcher(const char* a){
+    ifstream monFlux(a);  //Ouverture d'un fichier en lecture
 
+if(monFlux)
+{
+    bool tab[14];
+    string id[14];
+    
+    for (int i = 0; i < 14; i++)
+    {
+        monFlux >> id[i];
+        monFlux >> tab[i];
+        cout<<id[i]<<endl;
+        cout<<tab[i]<<endl;
+    }
+    M1.setEtat(tab[0]);
+    M2.setEtat(tab[1]);
+    M3.setEtat(tab[2]);
+    T1.setEtat(tab[3]);
+    T2.setEtat(tab[4]);
+    T3.setEtat(tab[5]);
+    VT12.setEtat(tab[6]);
+    VT23.setEtat(tab[7]);
+    V12.setEtat(tab[8]);
+    V23.setEtat(tab[9]);
+    V13.setEtat(tab[10]);
+    P1.setEtat(tab[11]);
+    P2.setEtat(tab[12]);
+    P3.setEtat(tab[13]);
+}
+else
+{
+    cout << "ERREUR: Impossible d'ouvrir le fichier en lecture." << endl;
+}
+
+}
 
 Launcher::Launcher(){
     T1.marche();

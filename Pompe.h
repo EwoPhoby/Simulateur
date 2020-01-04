@@ -16,6 +16,7 @@ public:
     void marche();
     void marchepas();
     void modifEtat();
+    void setEtat(bool);
     bool getEtat();
 
 
