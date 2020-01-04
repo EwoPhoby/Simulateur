@@ -17,11 +17,17 @@ int main(int argc, const char** argv) {
     }
 
 
-    else 
+    else if(strcmp( argv[1], "-ex") == 0)
     {
         Launcher L("exo");
-        L.Principal();
+        
+        //L.Principal();
     }
+    else
+    {
+        cout<<"option non reconnue"<<endl;
+    }
+    
     
 
     // De-Initialization
