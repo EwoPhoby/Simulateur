@@ -1,6 +1,8 @@
 #include "Launcher.h"
 
 int main(int argc, const char** argv) {
+
+    const char* log[3]={"azerty","aa","q"};
     
     
     // Initialization
@@ -12,20 +14,37 @@ int main(int argc, const char** argv) {
     //--------------------------------------------------------------------------------------
 
     if (argc==1){
-    Launcher L("exo");
+    Launcher L;
     L.Principal();
+
     }
 
 
-    else if(strcmp( argv[1], "-ex") == 0)
+    else if((strcmp( argv[1], "-ex") == 0)&& argc==3)
     {
-        Launcher L("exo");
+        bool verif;
+        for (int i = 0; i < 3; i++)
+        {
+            if(strcmp( argv[2],log[i]) == 0)
+            {
+                verif=true;
+                break;
+            }
+            else verif=false;
+        }
         
-        //L.Principal();
+        if (verif)
+        {
+            Launcher L("exo");
+            L.Principal(); 
+        }
+        else cout<<"utilisateur non reconnu"<<endl;
+        
+        
     }
     else
     {
-        cout<<"option non reconnue"<<endl;
+        cout<<"Option non reconnue\nPour lancer le programme :\n./projet ou ./projet <login>"<<endl;
     }
     
     
