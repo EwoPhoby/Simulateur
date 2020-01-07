@@ -22,11 +22,7 @@ Par défaut la version de Raylib sera statique pour en choisir une autre:
 Rendez vous [ici](https://github.com/raysan5/raylib/wiki/Working-on-GNU-Linux) et suivez les instructions si l'installation a échouée ou si vous souhaitez changer le type
 
 
-2. Pour lire le compte rendu du projet:
-
-
-
-3. Pour executer le simulateur:
+2. Pour executer le simulateur:
 
 ```
  $ make run

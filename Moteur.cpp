@@ -4,7 +4,7 @@
 
 Moteur::Moteur()
 {
-    etat=true;   
+    etat=false;   
 }
 
 Moteur::Moteur(bool a)

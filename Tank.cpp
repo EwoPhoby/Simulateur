@@ -5,7 +5,7 @@
 Tank::Tank()
 {
     this->capacite=100;
-    this->etat=false;
+    this->etat=true;
 }
 
 
