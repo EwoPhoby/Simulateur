@@ -32,3 +32,9 @@ Rendez vous [ici](https://github.com/raysan5/raylib/wiki/Working-on-GNU-Linux) e
 ```
  $ make listing
 ```
+
+3. Un rapport du projet
+
+```
+ $ make rapport
+```

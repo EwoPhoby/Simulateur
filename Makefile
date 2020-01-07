@@ -45,3 +45,6 @@ install:
 
 listing:
 	firefox listing.pdf
+
+rapport:
+	firefox rapport.pdf

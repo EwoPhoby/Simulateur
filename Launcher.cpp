@@ -274,6 +274,7 @@ void Launcher::drawMoteur(){
 void Launcher::Alimentation(){
 //----------------------------------------------------------------------------------------------------
         //Conditions Pour Chaque Moteur et Affichage Etat Marche
+//----------------------------------------------------------------------------------------------------
 
     if( 
         (( P1.getEtat() || P1s.getEtat() ) && T1.getEtat()) || 
