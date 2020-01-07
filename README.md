@@ -10,6 +10,7 @@ ABELLI Mickael BAUP WALSH Mathieu
 
 ```
 Par défaut la version de Raylib sera statique pour en choisir une autre
+```
  $ git clone https://github.com/raysan5/raylib.git raylib
  $ cd raylib/src/
  $ make PLATFORM=PLATFORM_DESKTOP # Version Statique .
