@@ -27,4 +27,6 @@ Rendez vous [ici](https://github.com/raysan5/raylib/wiki/Working-on-GNU-Linux) e
 ```
  $ make run
 ```
+3. Un listing des principales methodes
 
+[Cliquez ici](Simulateur/listing.pdf)
