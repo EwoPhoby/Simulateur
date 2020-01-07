@@ -37,3 +37,8 @@ git:
 	git add .
 	git commit -a --allow-empty-message -m ''
 	git push
+
+install:
+	git clone https://github.com/raysan5/raylib.git raylib
+	cd raylib/src/
+	make PLATFORM=PLATFORM_DESKTOP
