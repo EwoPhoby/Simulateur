@@ -9,7 +9,7 @@ ABELLI Mickael BAUP WALSH Mathieu
  $ make install
 ```
 
-    Par défaut la version de Raylib sera statique pour en choisir une autre:
+Par défaut la version de Raylib sera statique pour en choisir une autre:
 
 ```
  $ git clone https://github.com/raysan5/raylib.git raylib
@@ -19,7 +19,7 @@ ABELLI Mickael BAUP WALSH Mathieu
  $ make PLATFORM=PLATFORM_WEB # Version Web
 ```
 
-    Rendez vous [ici](https://github.com/raysan5/raylib/wiki/Working-on-GNU-Linux) et suivez les instructions si l'installation a échouée ou si vous souhaitez changer le type
+Rendez vous [ici](https://github.com/raysan5/raylib/wiki/Working-on-GNU-Linux) et suivez les instructions si l'installation a échouée ou si vous souhaitez changer le type
 
 
 2. Pour lire le compte rendu du projet:
