@@ -1,6 +1,5 @@
-ABELLI Mickael BAUP WALSH Mathieu
 
-# Projet Langages Avancés
+# Simulateur
 
 
 1. Pour installer les outils necessaire à la compilation utiliser les commandes suivantes: 
